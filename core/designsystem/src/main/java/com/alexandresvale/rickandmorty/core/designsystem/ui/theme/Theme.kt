@@ -1,6 +1,5 @@
-package com.alexandresvale.rickandmorty.ui.theme
+package com.alexandresvale.rickandmorty.core.designsystem.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

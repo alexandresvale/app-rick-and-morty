@@ -1,4 +1,4 @@
-package com.alexandresvale.rickandmorty.ui.theme
+package com.alexandresvale.rickandmorty.core.designsystem.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
