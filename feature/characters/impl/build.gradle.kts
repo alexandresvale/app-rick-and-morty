@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kover)
 }
 
 android {
@@ -68,4 +69,16 @@ dependencies {
     // Teste Instrumental.
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+}
+
+kover {
+    reports {
+        verify {
+            // Cria uma regra de validação obrigatória
+            rule {
+                // Define que o mínimo aceitável de cobertura de linhas é 60%
+                minBound(60)
+            }
+        }
+    }
 }

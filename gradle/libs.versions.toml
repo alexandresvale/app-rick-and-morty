@@ -25,6 +25,7 @@ paging = "3.3.2"
 mockk = "1.13.10"
 coroutines-test = "1.8.0"
 mockwebserver = "4.12.0"
+kover = "0.8.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -73,4 +74,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }

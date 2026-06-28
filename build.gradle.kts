@@ -5,4 +5,22 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kover)
+}
+
+dependencies {
+    subprojects.filter { it.buildFile.exists() }.forEach { proj ->
+        println("🔥 Kover agregando: ${proj.path}")
+        kover(proj)
+    }
+}
+
+kover {
+    reports {
+        verify {
+            rule {
+                minBound(60)
+            }
+        }
+    }
 }
