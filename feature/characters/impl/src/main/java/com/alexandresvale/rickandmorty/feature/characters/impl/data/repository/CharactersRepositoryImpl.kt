@@ -7,6 +7,7 @@ import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.Char
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.CharactersPagingSource
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.CharactersService
 import com.alexandresvale.rickandmorty.feature.characters.impl.domain.repository.CharactersRepository
+import com.alexandresvale.rickandmorty.feature.characters.impl.data.mapper.toDomain
 import kotlinx.coroutines.flow.Flow
 
 internal class CharactersRepositoryImpl(
@@ -22,5 +23,9 @@ internal class CharactersRepositoryImpl(
                 CharactersPagingSource(api = apiService)
             }
         ).flow
+    }
+
+    override suspend fun getCharacter(id: Int): CharacterModel {
+        return apiService.getCharacter(id).toDomain()
     }
 }
