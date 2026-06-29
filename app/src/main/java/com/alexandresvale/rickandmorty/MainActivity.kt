@@ -1,4 +1,4 @@
-package com.alexandresvale.rickandmorty.presentation
+package com.alexandresvale.rickandmorty
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
