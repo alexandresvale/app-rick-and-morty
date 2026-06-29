@@ -34,7 +34,8 @@ import androidx.compose.foundation.clickable
 
 @Composable
 internal fun CharactersScreen(
-    viewModel: CharactersViewModel
+    viewModel: CharactersViewModel,
+    onCharacterClick: (Int) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val charactersPagingItems = viewModel.charactersPagingFlow.collectAsLazyPagingItems()
@@ -67,9 +68,7 @@ internal fun CharactersScreen(
                 items(count = charactersPagingItems.itemCount) { index ->
                     val character = charactersPagingItems[index]
                     if (character != null) {
-                        // Use o mesmo Card bonitão com Coil que você fez antes aqui!
-                        // Exemplo: CharacterCard(character)
-                        RickCardItem(character = character)
+                        RickCardItem(character = character, onClick = { onCharacterClick(character.id) })
                     }
                 }
                 // 3. O Carregamento do Rodapé (Infinite Scroll)
@@ -93,7 +92,7 @@ fun CharactersContent(uiState: CharactersUiState) {
         is CharactersUiState.Success -> {
             LazyColumn {
                 items(uiState.characterModels) { character ->
-                    RickCardItem(character)
+                    RickCardItem(character, onClick = {})
                 }
             }
         }
@@ -101,11 +100,12 @@ fun CharactersContent(uiState: CharactersUiState) {
 }
 
 @Composable
-private fun RickCardItem(character: CharacterModel) {
+private fun RickCardItem(character: CharacterModel, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .clickable { onClick() }
     ) {
         Row(
             modifier = Modifier
