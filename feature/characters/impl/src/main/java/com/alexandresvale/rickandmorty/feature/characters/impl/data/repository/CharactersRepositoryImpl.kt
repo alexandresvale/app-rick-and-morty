@@ -16,8 +16,10 @@ internal class CharactersRepositoryImpl(
     override fun getCharacters(): Flow<PagingData<CharacterModel>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20, // O número de itens que a API retorna por vez
-                prefetchDistance = 2 // Quantos itens antes de acabar a tela o Paging deve pedir a próxima página (para esconder o carregamento do usuário)
+                // O número de itens que a API retorna por vez
+                pageSize = 20,
+                // Quantos itens antes de acabar a tela o Paging deve pedir a próxima página
+                prefetchDistance = 2
             ),
             pagingSourceFactory = {
                 CharactersPagingSource(api = apiService)

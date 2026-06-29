@@ -1,3 +1,5 @@
+@file:Suppress("TooGenericExceptionCaught")
+
 package com.alexandresvale.rickandmorty.feature.characters.impl.domain.usecase
 
 import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel

@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod", "FunctionName")
+
 package com.alexandresvale.rickandmorty.feature.characters.impl.presentation
 
 import androidx.compose.foundation.layout.Box

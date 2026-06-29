@@ -1,3 +1,5 @@
+@file:Suppress("TooGenericExceptionCaught")
+
 package com.alexandresvale.rickandmorty.feature.characters.impl.data
 
 import androidx.paging.PagingSource
@@ -15,7 +17,7 @@ internal class CharactersPagingSource(
             val currentPage = params.key ?: 1
             val response = api.getCharacters(page = currentPage)
             val characters = response.results.map { it.toDomain() }
-            
+
             // Dizemos ao Paging3 qual é a página atual e qual será a próxima!
             LoadResult.Page(
                 data = characters,
