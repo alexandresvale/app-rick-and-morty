@@ -18,8 +18,8 @@ object NetworkClient {
         }
 
         val json = Json {
-            ignoreUnknownKeys = true 
-            coerceInputValues = true 
+            ignoreUnknownKeys = true
+            coerceInputValues = true
         }
 
         val okHttpClient = customClient ?: OkHttpClient.Builder()
