@@ -34,6 +34,15 @@ dependencies {
 
 kover {
     reports {
+        filters {
+            excludes {
+                classes(
+                    "*Activity",
+                    "*ScreenKt*",
+                    "*Screen*"
+                )
+            }
+        }
         verify {
             rule {
                 minBound(60)

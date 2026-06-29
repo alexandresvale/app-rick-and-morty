@@ -1,6 +1,7 @@
 package com.alexandresvale.rickandmorty.feature.characters.impl.data.mapper
 
-import com.alexandresvale.rickandmorty.feature.characters.impl.data.response.CharacterDto
+import com.alexandresvale.rickandmorty.feature.characters.impl.data.response.CharacterLocationResponse
+import com.alexandresvale.rickandmorty.feature.characters.impl.data.response.CharacterResponse
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -8,11 +9,19 @@ internal class CharacterMapperTest {
     @Test
     fun `should map CharacterDto to CharacterModel correctly`() {
         // 1. Given / Arrange (Preparação)
-        val fakeDto = CharacterDto(
+        val fakeDto = CharacterResponse(
             id = 1,
             name = "Rick Sanchez",
             status = "Alive",
-            image = "https://url.da.imagem.com"
+            species = "Human",
+            type = "",
+            gender = "Male",
+            origin = CharacterLocationResponse("Earth", ""),
+            location = CharacterLocationResponse("Earth", ""),
+            image = "https://url.da.imagem.com",
+            episode = emptyList(),
+            url = "",
+            created = ""
         )
 
         // 2. When / Act (Ação)

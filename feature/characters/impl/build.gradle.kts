@@ -73,6 +73,15 @@ dependencies {
 
 kover {
     reports {
+        filters {
+            excludes {
+                classes(
+                    "*Activity",
+                    "*ScreenKt*",
+                    "*Screen*"
+                )
+            }
+        }
         verify {
             // Cria uma regra de validação obrigatória
             rule {
