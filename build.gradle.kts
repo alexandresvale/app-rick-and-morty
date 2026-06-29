@@ -6,6 +6,23 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kover)
+    alias(libs.plugins.detekt)
+}
+
+subprojects {
+    if (this.buildFile.exists()) {
+        apply(plugin = "io.gitlab.arturbosch.detekt")
+        
+        detekt {
+            buildUponDefaultConfig = true
+            autoCorrect = true
+            config.setFrom(files("${rootProject.projectDir}/config/detekt/detekt.yml"))
+        }
+        
+        dependencies {
+            add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
+        }
+    }
 }
 
 dependencies {

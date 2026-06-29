@@ -7,6 +7,7 @@ on:
     branches: [ "main" ] # Quando alguém jogar código direto na main
   pull_request:
     branches: [ "main" ] # Quando alguém pedir para juntar código (PR) na main
+  workflow_dispatch:
 
 # "Trabalhos": O que a máquina vai fazer
 jobs:
@@ -35,6 +36,22 @@ jobs:
       - name: Dar permissão ao Gradlew
         run: chmod +x gradlew
 
-      # 5. O momento da verdade: Compila, testa e verifica a nota de 60% do Kover!
-      - name: Compilar, Testar e Validar Cobertura
-        run: ./gradlew assembleDebug testDebugUnitTest koverVerify --stacktrace
+      # 5: Roda o Detekt para garantir o Código Limpo e formatação Kotlin
+      - name: Inspecionar Qualidade Kotlin (Detekt)
+        run: ./gradlew detekt --stacktrace
+
+      # 6: Roda o Android Lint para garantir Segurança e Boas Práticas do Android
+      - name: Inspecionar Qualidade Android (Lint)
+        run: ./gradlew lint --stacktrace
+
+      # 7. Compila o projeto para garantir que não há erros de sintaxe
+      - name: Compilar App (Build)
+        run: ./gradlew assembleDebug --stacktrace
+
+      # 8. Executa todos os testes unitários da aplicação
+      - name: Rodar Testes Unitários
+        run: ./gradlew testDebugUnitTest --stacktrace
+
+      # 9. Verifica se a cobertura de testes (Kover) atende à nota de corte
+      - name: Validar Cobertura de Código (Kover)
+        run: ./gradlew koverVerify --stacktrace
