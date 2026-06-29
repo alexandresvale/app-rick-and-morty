@@ -3,11 +3,11 @@ package com.alexandresvale.rickandmorty.feature.characters.impl.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.CharactersPagingSource
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.CharactersService
-import com.alexandresvale.rickandmorty.feature.characters.impl.domain.repository.CharactersRepository
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.mapper.toDomain
+import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
+import com.alexandresvale.rickandmorty.feature.characters.impl.domain.repository.CharactersRepository
 import kotlinx.coroutines.flow.Flow
 
 internal class CharactersRepositoryImpl(

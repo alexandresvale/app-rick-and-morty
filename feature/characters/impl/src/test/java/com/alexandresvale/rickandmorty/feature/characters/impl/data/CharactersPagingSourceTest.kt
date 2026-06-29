@@ -18,7 +18,6 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit
 
-
 internal class CharactersPagingSourceTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var apiService: CharactersService
@@ -85,7 +84,6 @@ internal class CharactersPagingSourceTest {
         assertTrue(errorResult.throwable is HttpException)
     }
 
-
     @Test
     fun `should return Error when there is no internet connection`() = runTest {
         // Given Arrange: Simulamos a internet caindo antes mesmo de conectar
@@ -125,7 +123,9 @@ internal class CharactersPagingSourceTest {
         // Arrange: Criamos um Retrofit de mentira com MockK só para este teste
         val badApiService = mockk<CharactersService>()
         // Ensinamos o dublê a jogar a exata exceção que você viu no emulador!
-        coEvery { badApiService.getCharacters(any()) } throws UnknownHostException("Unable to resolve host rickandmortyapi.com")
+        coEvery {
+            badApiService.getCharacters(any())
+        } throws UnknownHostException("Unable to resolve host rickandmortyapi.com")
         // Instanciamos um PagingSource isolado usando o serviço quebrado
         val badPagingSource = CharactersPagingSource(badApiService)
 

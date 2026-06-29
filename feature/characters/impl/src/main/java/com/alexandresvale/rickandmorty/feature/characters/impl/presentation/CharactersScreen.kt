@@ -1,5 +1,6 @@
 package com.alexandresvale.rickandmorty.feature.characters.impl.presentation
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,8 +30,6 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
-
-import androidx.compose.foundation.clickable
 
 @Composable
 internal fun CharactersScreen(

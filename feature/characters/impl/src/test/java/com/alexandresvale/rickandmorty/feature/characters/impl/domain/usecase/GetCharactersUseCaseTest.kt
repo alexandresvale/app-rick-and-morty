@@ -19,7 +19,7 @@ internal class GetCharactersUseCaseTest {
         every { repository.getCharacters() } returns flowOf(PagingData.empty())
 
         // When
-        val result = useCase()
+        useCase()
 
         // Then
         verify(exactly = 1) {

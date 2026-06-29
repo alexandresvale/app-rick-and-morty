@@ -3,9 +3,9 @@ package com.alexandresvale.rickandmorty.feature.characters.impl.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.CharactersPagingSource
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.CharactersService
+import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
 import com.alexandresvale.rickandmorty.feature.characters.impl.domain.repository.CharactersRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -17,7 +17,8 @@ internal class MockCharactersRepositoryImpl(
         return Pager(
             config = PagingConfig(
                 pageSize = 20, // O número de itens que a API retorna por vez
-                prefetchDistance = 2 // Quantos itens antes de acabar a tela o Paging deve pedir a próxima página (para esconder o carregamento do usuário)
+                // Quantos itens antes de acabar a tela deve pedir a próxima página
+                prefetchDistance = 2
             ),
             pagingSourceFactory = {
                 CharactersPagingSource(api = apiService)

@@ -10,7 +10,6 @@ import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test
 
-
 internal class CharactersViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
