@@ -1,4 +1,4 @@
-package com.alexandresvale.rickandmorty.feature.characters.api
+package com.alexandresvale.rickandmorty.feature.characters.impl.domain.model
 
 data class CharacterModel(
     val id: Int,

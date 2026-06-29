@@ -1,0 +1,40 @@
+# O nome da sua pipeline que vai aparecer lá no site do GitHub
+name: Android CI
+
+# "Gatilhos": Quando essa esteira deve rodar?
+on:
+  push:
+    branches: [ "main" ] # Quando alguém jogar código direto na main
+  pull_request:
+    branches: [ "main" ] # Quando alguém pedir para juntar código (PR) na main
+
+# "Trabalhos": O que a máquina vai fazer
+jobs:
+  build_and_test:
+    # Vai alugar um servidor Ubuntu zerado (Linux) do GitHub
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Faz o download de todo o seu código para dentro da máquina virtual
+      - name: Baixar Código (Checkout)
+        uses: actions/checkout@v4
+
+      # 2. Instala o Java 21, que é o motor do seu projeto
+      - name: Configurar Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'corretto' # Versão oficial de Java mantida pela Amazon
+          java-version: '21'
+
+      # 3. Configura o cache inteligente do Gradle.
+      # Isso faz com que os próximos builds sejam extremamente rápidos!
+      - name: Configurar Cache do Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      # 4. No Linux, precisamos dar permissão de "execução" pro Gradle rodar
+      - name: Dar permissão ao Gradlew
+        run: chmod +x gradlew
+
+      # 5. O momento da verdade: Compila, testa e verifica a nota de 60% do Kover!
+      - name: Compilar, Testar e Validar Cobertura
+        run: ./gradlew assembleDebug testDebugUnitTest koverVerify --stacktrace
