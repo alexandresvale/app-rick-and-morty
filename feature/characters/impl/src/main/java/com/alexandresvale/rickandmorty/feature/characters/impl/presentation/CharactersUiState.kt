@@ -1,6 +1,6 @@
 package com.alexandresvale.rickandmorty.feature.characters.impl.presentation
 
-import com.alexandresvale.rickandmorty.feature.characters.api.CharacterModel
+import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
 
 sealed class CharactersUiState {
     object Loading : CharactersUiState()

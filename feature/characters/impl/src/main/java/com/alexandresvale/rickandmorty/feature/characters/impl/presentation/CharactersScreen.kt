@@ -28,7 +28,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
-import com.alexandresvale.rickandmorty.feature.characters.api.CharacterModel
+import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
+
+import androidx.compose.foundation.clickable
 
 @Composable
 internal fun CharactersScreen(

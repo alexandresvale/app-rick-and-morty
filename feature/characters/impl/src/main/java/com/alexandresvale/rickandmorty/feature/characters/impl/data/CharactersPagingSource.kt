@@ -1,9 +1,8 @@
 package com.alexandresvale.rickandmorty.feature.characters.impl.data
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.alexandresvale.rickandmorty.feature.characters.api.CharacterModel
+import com.alexandresvale.rickandmorty.feature.characters.impl.domain.model.CharacterModel
 import com.alexandresvale.rickandmorty.feature.characters.impl.data.mapper.toDomain
 
 internal class CharactersPagingSource(
